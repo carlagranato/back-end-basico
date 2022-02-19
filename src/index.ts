@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import routerCategorias from './routers/categorias'
 import routerProdutos from './routers/produtos'
+import path from 'path'
 
 // Porta do servidor
 const PORT = process.env.PORT || 4000
@@ -11,6 +12,9 @@ const HOSTNAME = process.env.HOSTNAME || 'http://localhost'
 
 // App Express
 const app = express()
+
+// Estabelece uma rota estática da public 
+app.use(express.static(path.join(__dirname, 'public')))
 
 // Endpoint raiz
 app.get('/', (req, res) => {

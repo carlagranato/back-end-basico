@@ -5,6 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
+const categorias_1 = __importDefault(require("./routers/categorias"));
+const produtos_1 = __importDefault(require("./routers/produtos"));
 // Porta do servidor
 const PORT = process.env.PORT || 4000;
 // Host do servidor
@@ -15,6 +17,10 @@ const app = (0, express_1.default)();
 app.get('/', (req, res) => {
     res.send('Bem-vindo!');
 });
+// Endpoint para as rotas de categorias
+app.use('/', categorias_1.default);
+//Endpoint para rota de produtos
+app.use('/', produtos_1.default);
 // Cors
 app.use((0, cors_1.default)({
     origin: ['http://localhost:3000']
